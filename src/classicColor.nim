@@ -18,6 +18,10 @@ proc forCss*(color: Color): string =
   ## converts color to "rgb(r,g,b)" string
   fmt"rgb({color.r},{color.g},{color.b})"
 
+proc inlineHttp*(str: string): string = 
+  let color = computeColor(str).forCss
+  fmt"""<span style="color: {color}>{str}</span>"""
+
 when isMainModule:
   assert computeColor("sn0re") == (38,169,47)
   assert computeColor("sn0re").forCss == "rgb(38,169,47)"
